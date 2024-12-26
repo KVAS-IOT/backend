@@ -1,10 +1,10 @@
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column
 
-from database.database_config import BaseModel
+from database.database_config import DBBaseModel
 
 
-class AttendanceScannersModel(BaseModel):
+class AttendanceScannersModel(DBBaseModel):
     __tablename__ = "attendance_scanners"
 
     id: Mapped[str] = mapped_column(primary_key=True)
