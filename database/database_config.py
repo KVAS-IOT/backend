@@ -19,4 +19,4 @@ async def check_database_connection():
         async with session.begin():
             result = await session.execute(select(text("1")))
             if result.scalar() != 1:
-                raise ValueError("Database is not ready")
+                raise ValueError("Database wasn't established")
