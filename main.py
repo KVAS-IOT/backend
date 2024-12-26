@@ -7,10 +7,13 @@ from database.database_config import check_database_connection
 from controllers.labs_controller import labs_router
 from controllers.attendances_controller import attendances_router
 from controllers.devices_controller import devices_router
+from database.tables_creation import create_db_tables
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await check_database_connection()
+    await create_db_tables()
     yield
     print("Application shutdown")
 
