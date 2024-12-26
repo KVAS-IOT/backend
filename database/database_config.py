@@ -20,3 +20,4 @@ async def check_database_connection():
             result = await session.execute(select(text("1")))
             if result.scalar() != 1:
                 raise ValueError("Database connection wasn't established")
+            print("Connection was established")

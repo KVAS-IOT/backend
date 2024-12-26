@@ -9,3 +9,4 @@ async def create_db_tables():
     async with async_engine.begin() as engine:
         await engine.run_sync(BaseModel.metadata.drop_all)
         await engine.run_sync(BaseModel.metadata.create_all)
+        print("Tables were created")
