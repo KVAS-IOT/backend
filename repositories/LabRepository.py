@@ -14,5 +14,4 @@ class LabRepository:
 
                 res = await session.execute(query)
                 lab_models = res.scalars().all()
-                print(lab_models)
                 return lab_models
