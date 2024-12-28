@@ -17,6 +17,6 @@ class LabService:
         return lab_lecture_times
 
     @staticmethod
-    async def update_lab_last_update_time(lab_id: int, new_last_updated_date: str) -> None:
+    async def update_lab_last_update_time(lab_id: int, new_last_updated_date: str):
         new_last_update_date_datetime = DatetimeService.convert_date_string_to_datetime(new_last_updated_date)
         await LabRepository.update_lab_last_update_time(lab_id, new_last_update_date_datetime)

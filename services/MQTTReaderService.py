@@ -4,8 +4,8 @@ from loguru import logger
 import paho.mqtt.client as mqtt
 
 from config.environment_variables import MQTT_USERNAME, MQTT_PASSWORD, MQTT_ADDRESS, MQTT_PORT
-from dtos.AttendanceDTOs import AttendanceAddDTO
 from dtos.LabDTOs import LabGetDTO
+from services.AttendanceService import AttendanceService
 from services.LabService import LabService
 
 
@@ -69,10 +69,10 @@ class MQTTReaderService:
             return
 
         payload = json.loads(msg.payload)
-        logger.debug(f"Payload: {payload}")
 
-
+        await AttendanceService.save_attendances(payload["attendances"], lab_to_insert.id)
         await LabService.update_lab_last_update_time(lab_to_insert.id, payload["update_time"])
+
 
 
     async def update_labs_to_check(self):
