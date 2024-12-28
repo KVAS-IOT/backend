@@ -21,6 +21,6 @@ class LabsModel(DBBaseModel):
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str]
     number: Mapped[str]
-    last_updated_date: Mapped[datetime.datetime]
+    last_updated_date: Mapped[datetime.datetime] = mapped_column(nullable=True)
 
     lecture_times: Mapped[list[LectureTimes]] = mapped_column(ARRAY(Enum(LectureTimes)), nullable=True)

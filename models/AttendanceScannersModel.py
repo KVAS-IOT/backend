@@ -8,4 +8,4 @@ class AttendanceScannersModel(DBBaseModel):
     __tablename__ = "attendance_scanners"
 
     id: Mapped[str] = mapped_column(primary_key=True)
-    lab_id: Mapped[int] = mapped_column(ForeignKey("labs.id", ondelete="CASCADE"))
+    lab_id: Mapped[int] = mapped_column(ForeignKey("labs.id", ondelete="CASCADE"), nullable=True)
