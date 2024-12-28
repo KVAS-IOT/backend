@@ -1,3 +1,4 @@
+import datetime
 import enum
 
 from sqlalchemy import Enum
@@ -21,6 +22,6 @@ class LabsModel(DBBaseModel):
     name: Mapped[str]
     number: Mapped[str]
     gateway_url: Mapped[str]
-    last_updated_date: Mapped[str]
+    last_updated_date: Mapped[datetime.datetime]
 
     lecture_times: Mapped[list[LectureTimes]] = mapped_column(ARRAY(Enum(LectureTimes)), nullable=True)
