@@ -3,16 +3,16 @@ from datetime import datetime
 from database.database_config import async_session_factory
 from models.AttendanceScannersModel import AttendanceScannersModel
 from models.AttendancesModel import AttendancesModel
-from models.LabsModel import LabsModel
+from models.LabsModel import LabsModel, LectureTimes
 
 
 async def insert_labs_fake_data():
     fake_labs = [
-        LabsModel(name="Abydoss", number="A536", gateway_url="abydos-gw.fei.tuke.sk", last_updated_date="2024-12-26 00:00:00"),
-        LabsModel(name="Dune", number="B529", gateway_url="dune-gw.fei.tuke.sk", last_updated_date="2024-12-26 00:00:00"),
-        LabsModel(name="Endor", number="B526", gateway_url="endor-gw.fei.tuke.sk", last_updated_date="2024-12-26 00:00:00"),
-        LabsModel(name="Meridian", number="B519", gateway_url="meridian-gw.fei.tuke.sk", last_updated_date="2024-12-26 00:00:00"),
-        LabsModel(name="Vulcan", number="A514", gateway_url="vulcan-gw.fei.tuke.sk", last_updated_date="2024-12-26 00:00:00"),
+        LabsModel(name="Abydoss", number="A536", gateway_url="abydos-gw.fei.tuke.sk", last_updated_date="2024-12-26 00:00:00", lecture_times=[LectureTimes.T_7_30_9_00, LectureTimes.T_9_10_10_40, LectureTimes.T_10_50_12_20, LectureTimes.T_13_30_15_00, LectureTimes.T_15_10_16_40]),
+        LabsModel(name="Dune", number="B529", gateway_url="dune-gw.fei.tuke.sk", last_updated_date="2024-12-26 00:00:00", lecture_times=[LectureTimes.T_7_30_9_00, LectureTimes.T_9_10_10_40, LectureTimes.T_10_50_12_20, LectureTimes.T_13_30_15_00, LectureTimes.T_15_10_16_40]),
+        LabsModel(name="Endor", number="B526", gateway_url="endor-gw.fei.tuke.sk", last_updated_date="2024-12-26 00:00:00", lecture_times=[LectureTimes.T_7_30_9_00, LectureTimes.T_9_10_10_40, LectureTimes.T_10_50_12_20, LectureTimes.T_13_30_15_00, LectureTimes.T_15_10_16_40]),
+        LabsModel(name="Meridian", number="B519", gateway_url="meridian-gw.fei.tuke.sk", last_updated_date="2024-12-26 00:00:00", lecture_times=[LectureTimes.T_7_30_9_00, LectureTimes.T_9_10_10_40, LectureTimes.T_10_50_12_20, LectureTimes.T_13_30_15_00, LectureTimes.T_15_10_16_40]),
+        LabsModel(name="Vulcan", number="A514", gateway_url="vulcan-gw.fei.tuke.sk", last_updated_date="2024-12-26 00:00:00", lecture_times=[LectureTimes.T_7_30_9_00, LectureTimes.T_9_10_10_40, LectureTimes.T_10_50_12_20, LectureTimes.T_13_30_15_00, LectureTimes.T_15_10_16_40]),
     ]
 
     async with async_session_factory() as session:
