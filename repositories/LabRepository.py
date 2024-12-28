@@ -1,3 +1,5 @@
+import datetime
+
 from sqlalchemy import select
 
 from database.database_config import async_session_factory
@@ -28,3 +30,16 @@ class LabRepository:
 
                 res = await session.execute(query)
                 return res.scalars().first()
+
+    @staticmethod
+    async def update_lab_last_update_time(lab_id: int, new_last_updated_date: datetime.datetime):
+        async with async_session_factory() as session:
+            query = (
+                select(LabsModel)
+                .filter(LabsModel.id == lab_id)
+            )
+
+            res = await session.execute(query)
+            lab_model = res.scalars().first()
+            lab_model.last_updated_date = new_last_updated_date
+            await session.commit()
