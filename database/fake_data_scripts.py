@@ -77,11 +77,11 @@ async def insert_attendances_fake_data():
 
 async def insert_gateway_fake_data():
     fake_gateways = [
-        GatewaysModel(gateway_url="abydos-gw.fei.tuke.sk", gateway_port= 1883, gateway_username="maker", gateway_password="this.is.mqtt", lab_id=1),
-        GatewaysModel(gateway_url="dune-gw.fei.tuke.sk", gateway_port= 1883, gateway_username="maker", gateway_password="this.is.mqtt", lab_id=2),
-        GatewaysModel(gateway_url="endor-gw.fei.tuke.sk", gateway_port= 1883, gateway_username="maker", gateway_password="this.is.mqtt", lab_id=3),
-        GatewaysModel(gateway_url="meridian-gw.fei.tuke.sk", gateway_port= 1883, gateway_username="maker", gateway_password="this.is.mqtt", lab_id=4),
-        GatewaysModel(gateway_url="vulcan-gw.fei.tuke.sk", gateway_port= 1883, gateway_username="maker", gateway_password="this.is.mqtt", lab_id=5),
+        GatewaysModel(url="abydos-gw.fei.tuke.sk", port= 1883, username="maker", password="this.is.mqtt", lab_id=1),
+        GatewaysModel(url="dune-gw.fei.tuke.sk", port= 1883, username="maker", password="this.is.mqtt", lab_id=2),
+        GatewaysModel(url="endor-gw.fei.tuke.sk", port= 1883, username="maker", password="this.is.mqtt", lab_id=3),
+        GatewaysModel(url="meridian-gw.fei.tuke.sk", port= 1883, username="maker", password="this.is.mqtt", lab_id=4),
+        GatewaysModel(url="vulcan-gw.fei.tuke.sk", port= 1883, username="maker", password="this.is.mqtt", lab_id=5),
     ]
 
     async with async_session_factory() as session:

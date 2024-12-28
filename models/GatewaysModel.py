@@ -8,9 +8,9 @@ class GatewaysModel(DBBaseModel):
     __tablename__ = "gateways"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    gateway_url: Mapped[str]
-    gateway_port: Mapped[int]
-    gateway_username: Mapped[str]
-    gateway_password: Mapped[str]
+    url: Mapped[str]
+    port: Mapped[int]
+    username: Mapped[str]
+    password: Mapped[str]
 
     lab_id: Mapped[int] = mapped_column(ForeignKey("labs.id", ondelete="CASCADE"), unique=True)
