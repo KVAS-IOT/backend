@@ -1,7 +1,8 @@
 from sqlalchemy import select
 
 from database.database_config import async_session_factory
-from models.LabsModel import LabsModel
+from models.LabsModel import LabsModel, LectureTimes
+
 
 class LabRepository:
     @staticmethod
@@ -17,7 +18,7 @@ class LabRepository:
                 return lab_models
 
     @staticmethod
-    async def get_lab_lecture_times_by_lab_id(lab_id: int) -> list[str]:
+    async def get_lab_lecture_times_by_lab_id(lab_id: int) -> list[LectureTimes]:
         async with async_session_factory() as session:
             async with session.begin():
                 query = (

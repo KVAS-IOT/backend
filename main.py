@@ -12,7 +12,7 @@ from database.tables_creation import create_db_tables
 
 
 @asynccontextmanager
-async def lifespan(app: FastAPI):
+async def lifespan(_: FastAPI):
     await check_database_connection()
     await create_db_tables()
     await insert_fake_data_to_db()
