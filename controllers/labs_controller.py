@@ -1,5 +1,6 @@
 from fastapi import APIRouter, status
 
+from dtos.GatewayDTOs import GatewayGetDTO
 from dtos.LabDTOs import LabGetDTO, LabAddDTO
 from models.LabsModel import LectureTimes
 from services.LabService import LabService
@@ -21,5 +22,10 @@ async def create_lab(lab: LabAddDTO) -> None:
 
 @labs_router.put("/{lab_id}/lectures", status_code=status.HTTP_202_ACCEPTED)
 async def update_lab_lectures(lab_id: int, lecture_times: list[LectureTimes]) -> None:
+    # TODO: Implement
+    pass
+
+@labs_router.get("/{lab_id}/gateway")
+async def get_lab_gateway(lab_id: int) -> GatewayGetDTO:
     # TODO: Implement
     pass
