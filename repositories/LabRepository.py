@@ -15,3 +15,15 @@ class LabRepository:
                 res = await session.execute(query)
                 lab_models = res.scalars().all()
                 return lab_models
+
+    @staticmethod
+    async def get_lab_lecture_times_by_lab_id(lab_id: int) -> list[str]:
+        async with async_session_factory() as session:
+            async with session.begin():
+                query = (
+                    select(LabsModel.lecture_times)
+                    .filter(LabsModel.id == lab_id)
+                )
+
+                res = await session.execute(query)
+                return res.scalars().first()
