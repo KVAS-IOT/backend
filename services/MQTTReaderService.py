@@ -77,3 +77,7 @@ class MQTTReaderService:
 
     async def update_labs_to_check(self):
         self.labs_to_check = await LabService.get_all_labs()
+
+    def stop(self):
+        self.client.loop_stop()
+        logger.info("MQTT Reader Service stopped")

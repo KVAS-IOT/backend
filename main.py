@@ -19,7 +19,7 @@ async def lifespan(_: FastAPI):
     await insert_fake_data_to_db()
     MQTTReaderService()
     yield
-    MQTTReaderService().client.loop_stop()
+    MQTTReaderService().stop()
     print("Application shutdown")
 
 app = FastAPI(lifespan=lifespan)
