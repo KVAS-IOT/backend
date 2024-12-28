@@ -3,8 +3,10 @@ import datetime
 from pydantic import BaseModel
 
 
-class LabGetDTO(BaseModel):
-    id: int
+class LabAddDTO(BaseModel):
     name: str
     number: str
+
+class LabGetDTO(LabAddDTO):
+    id: int
     last_updated_date: datetime.datetime

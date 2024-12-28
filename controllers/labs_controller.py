@@ -1,6 +1,8 @@
-from fastapi import APIRouter
+from typing import Annotated
 
-from dtos.LabDTOs import LabGetDTO
+from fastapi import APIRouter, status, Depends
+
+from dtos.LabDTOs import LabGetDTO, LabAddDTO
 from models.LabsModel import LectureTimes
 from services.LabService import LabService
 
@@ -13,3 +15,7 @@ async def get_labs() -> list[LabGetDTO]:
 @labs_router.get("/{lab_id}/lectures")
 async def get_lab(lab_id: int) -> list[LectureTimes]:
     return await LabService.get_lab_lecture_times_by_lab_id(lab_id)
+
+@labs_router.post("/", status_code=status.HTTP_201_CREATED)
+async def create_lab(lab: LabAddDTO):
+    pass
