@@ -3,6 +3,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
+from controllers.GatewaysController import gateways_router
 from database.database_config import check_database_connection
 from controllers.labs_controller import labs_router
 from controllers.attendances_controller import attendances_router
@@ -35,6 +36,7 @@ app.add_middleware(
 app.include_router(labs_router, prefix="/labs", tags=["labs"])
 app.include_router(attendances_router, prefix="/attendances", tags=["attendances"])
 app.include_router(devices_router, prefix="/devices", tags=["devices"])
+app.include_router(gateways_router, prefix="/gateways", tags=["gateways"])
 
 
 @app.get("/")

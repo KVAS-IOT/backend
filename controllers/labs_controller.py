@@ -1,6 +1,4 @@
-from typing import Annotated
-
-from fastapi import APIRouter, status, Depends
+from fastapi import APIRouter, status
 
 from dtos.LabDTOs import LabGetDTO, LabAddDTO
 from models.LabsModel import LectureTimes
