@@ -1,6 +1,7 @@
 from database.database_config import async_session_factory
 from models.AttendanceScannersModel import AttendanceScannersModel
 from models.AttendancesModel import AttendancesModel
+from models.GatewaysModel import GatewaysModel
 from models.LabsModel import LabsModel, LectureTimes
 from services.DatetimeService import DatetimeService
 
@@ -74,7 +75,21 @@ async def insert_attendances_fake_data():
         session.add_all(fake_attendances)
         await session.commit()
 
+async def insert_gateway_fake_data():
+    fake_gateways = [
+        GatewaysModel(gateway_url="abydos-gw.fei.tuke.sk", gateway_port= 1883, gateway_username="maker", gateway_password="this.is.mqtt", lab_id=1),
+        GatewaysModel(gateway_url="dune-gw.fei.tuke.sk", gateway_port= 1883, gateway_username="maker", gateway_password="this.is.mqtt", lab_id=2),
+        GatewaysModel(gateway_url="endor-gw.fei.tuke.sk", gateway_port= 1883, gateway_username="maker", gateway_password="this.is.mqtt", lab_id=3),
+        GatewaysModel(gateway_url="meridian-gw.fei.tuke.sk", gateway_port= 1883, gateway_username="maker", gateway_password="this.is.mqtt", lab_id=4),
+        GatewaysModel(gateway_url="vulcan-gw.fei.tuke.sk", gateway_port= 1883, gateway_username="maker", gateway_password="this.is.mqtt", lab_id=5),
+    ]
+
+    async with async_session_factory() as session:
+        session.add_all(fake_gateways)
+        await session.commit()
+
 async def insert_fake_data_to_db():
     await insert_labs_fake_data()
     await insert_attendance_scanners_fake_data()
     await insert_attendances_fake_data()
+    await insert_gateway_fake_data()

@@ -13,4 +13,4 @@ class GatewaysModel(DBBaseModel):
     gateway_username: Mapped[str]
     gateway_password: Mapped[str]
 
-    gateway_lab: Mapped[int] = mapped_column(ForeignKey("labs.id", ondelete="CASCADE"), unique=True)
+    lab_id: Mapped[int] = mapped_column(ForeignKey("labs.id", ondelete="CASCADE"), unique=True)
