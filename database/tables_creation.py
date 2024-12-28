@@ -2,6 +2,7 @@ from database.database_config import async_session_factory, DBBaseModel, async_e
 
 from models.AttendanceScannersModel import AttendanceScannersModel
 from models.AttendancesModel import AttendancesModel
+from models.GatewaysModel import GatewaysModel
 from models.LabsModel import LabsModel
 
 

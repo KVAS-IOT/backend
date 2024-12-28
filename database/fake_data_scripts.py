@@ -1,17 +1,18 @@
 from database.database_config import async_session_factory
 from models.AttendanceScannersModel import AttendanceScannersModel
 from models.AttendancesModel import AttendancesModel
+from models.GatewaysModel import GatewaysModel
 from models.LabsModel import LabsModel, LectureTimes
 from services.DatetimeService import DatetimeService
 
 
 async def insert_labs_fake_data():
     fake_labs = [
-        LabsModel(name="Abydoss", number="A536", gateway_url="abydos-gw.fei.tuke.sk", last_updated_date=DatetimeService.convert_date_string_to_datetime("2024-12-26 00:00:00"), lecture_times=[LectureTimes.T_7_30_9_00, LectureTimes.T_9_10_10_40, LectureTimes.T_10_50_12_20, LectureTimes.T_13_30_15_00, LectureTimes.T_15_10_16_40]),
-        LabsModel(name="Dune", number="B529", gateway_url="dune-gw.fei.tuke.sk", last_updated_date=DatetimeService.convert_date_string_to_datetime("2024-12-26 00:00:00"), lecture_times=[LectureTimes.T_7_30_9_00, LectureTimes.T_9_10_10_40, LectureTimes.T_10_50_12_20, LectureTimes.T_13_30_15_00, LectureTimes.T_15_10_16_40]),
-        LabsModel(name="Endor", number="B526", gateway_url="endor-gw.fei.tuke.sk", last_updated_date=DatetimeService.convert_date_string_to_datetime("2024-12-26 00:00:00"), lecture_times=[LectureTimes.T_7_30_9_00, LectureTimes.T_9_10_10_40, LectureTimes.T_10_50_12_20, LectureTimes.T_13_30_15_00, LectureTimes.T_15_10_16_40]),
-        LabsModel(name="Meridian", number="B519", gateway_url="meridian-gw.fei.tuke.sk", last_updated_date=DatetimeService.convert_date_string_to_datetime("2024-12-26 00:00:00"), lecture_times=[LectureTimes.T_7_30_9_00, LectureTimes.T_9_10_10_40, LectureTimes.T_10_50_12_20, LectureTimes.T_13_30_15_00, LectureTimes.T_15_10_16_40]),
-        LabsModel(name="Vulcan", number="A514", gateway_url="vulcan-gw.fei.tuke.sk", last_updated_date=DatetimeService.convert_date_string_to_datetime("2024-12-26 00:00:00"), lecture_times=[LectureTimes.T_7_30_9_00, LectureTimes.T_9_10_10_40, LectureTimes.T_10_50_12_20, LectureTimes.T_13_30_15_00, LectureTimes.T_15_10_16_40]),
+        LabsModel(name="Abydoss", number="A536", last_updated_date=DatetimeService.convert_date_string_to_datetime("2024-12-26 00:00:00"), lecture_times=[LectureTimes.T_7_30_9_00, LectureTimes.T_9_10_10_40, LectureTimes.T_10_50_12_20, LectureTimes.T_13_30_15_00, LectureTimes.T_15_10_16_40]),
+        LabsModel(name="Dune", number="B529", last_updated_date=DatetimeService.convert_date_string_to_datetime("2024-12-26 00:00:00"), lecture_times=[LectureTimes.T_7_30_9_00, LectureTimes.T_9_10_10_40, LectureTimes.T_10_50_12_20, LectureTimes.T_13_30_15_00, LectureTimes.T_15_10_16_40]),
+        LabsModel(name="Endor", number="B526", last_updated_date=DatetimeService.convert_date_string_to_datetime("2024-12-26 00:00:00"), lecture_times=[LectureTimes.T_7_30_9_00, LectureTimes.T_9_10_10_40, LectureTimes.T_10_50_12_20, LectureTimes.T_13_30_15_00, LectureTimes.T_15_10_16_40]),
+        LabsModel(name="Meridian", number="B519", last_updated_date=DatetimeService.convert_date_string_to_datetime("2024-12-26 00:00:00"), lecture_times=[LectureTimes.T_7_30_9_00, LectureTimes.T_9_10_10_40, LectureTimes.T_10_50_12_20, LectureTimes.T_13_30_15_00, LectureTimes.T_15_10_16_40]),
+        LabsModel(name="Vulcan", number="A514", last_updated_date=DatetimeService.convert_date_string_to_datetime("2024-12-26 00:00:00"), lecture_times=[LectureTimes.T_7_30_9_00, LectureTimes.T_9_10_10_40, LectureTimes.T_10_50_12_20, LectureTimes.T_13_30_15_00, LectureTimes.T_15_10_16_40]),
     ]
 
     async with async_session_factory() as session:
@@ -74,7 +75,21 @@ async def insert_attendances_fake_data():
         session.add_all(fake_attendances)
         await session.commit()
 
+async def insert_gateway_fake_data():
+    fake_gateways = [
+        GatewaysModel(url="abydos-gw.fei.tuke.sk", port= 1883, username="maker", password="this.is.mqtt", lab_id=1),
+        GatewaysModel(url="dune-gw.fei.tuke.sk", port= 1883, username="maker", password="this.is.mqtt", lab_id=2),
+        GatewaysModel(url="endor-gw.fei.tuke.sk", port= 1883, username="maker", password="this.is.mqtt", lab_id=3),
+        GatewaysModel(url="meridian-gw.fei.tuke.sk", port= 1883, username="maker", password="this.is.mqtt", lab_id=4),
+        GatewaysModel(url="vulcan-gw.fei.tuke.sk", port= 1883, username="maker", password="this.is.mqtt", lab_id=5),
+    ]
+
+    async with async_session_factory() as session:
+        session.add_all(fake_gateways)
+        await session.commit()
+
 async def insert_fake_data_to_db():
     await insert_labs_fake_data()
     await insert_attendance_scanners_fake_data()
     await insert_attendances_fake_data()
+    await insert_gateway_fake_data()
