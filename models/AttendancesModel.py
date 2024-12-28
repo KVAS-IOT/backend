@@ -3,10 +3,10 @@ import datetime
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column
 
-from database.database_config import BaseModel
+from database.database_config import DBBaseModel
 
 
-class AttendancesModel(BaseModel):
+class AttendancesModel(DBBaseModel):
     __tablename__ = "attendances"
 
     id: Mapped[int] = mapped_column(primary_key=True)

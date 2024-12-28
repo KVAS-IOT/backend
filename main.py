@@ -12,7 +12,7 @@ from database.tables_creation import create_db_tables
 
 
 @asynccontextmanager
-async def lifespan(app: FastAPI):
+async def lifespan(_: FastAPI):
     await check_database_connection()
     await create_db_tables()
     await insert_fake_data_to_db()
@@ -29,9 +29,9 @@ app.add_middleware(
     allow_headers=["*"],            # List of allowed headers
 )
 
-app.include_router(labs_router, prefix="/labs")
-app.include_router(attendances_router, prefix="/attendances")
-app.include_router(devices_router, prefix="/devices")
+app.include_router(labs_router, prefix="/labs", tags=["labs"])
+app.include_router(attendances_router, prefix="/attendances", tags=["attendances"])
+app.include_router(devices_router, prefix="/devices", tags=["devices"])
 
 
 @app.get("/")
