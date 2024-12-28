@@ -10,6 +10,8 @@ python-dotenv = "*"
 sqlalchemy = "*"
 asyncpg = "*"
 greenlet = "*"
+paho-mqtt = "*"
+loguru = "*"
 
 [dev-packages]
 

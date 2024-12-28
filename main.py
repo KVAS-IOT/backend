@@ -9,6 +9,7 @@ from controllers.attendances_controller import attendances_router
 from controllers.devices_controller import devices_router
 from database.fake_data_scripts import insert_fake_data_to_db
 from database.tables_creation import create_db_tables
+from services.MQTTReaderService import MQTTReaderService
 
 
 @asynccontextmanager
@@ -16,7 +17,9 @@ async def lifespan(_: FastAPI):
     await check_database_connection()
     await create_db_tables()
     await insert_fake_data_to_db()
+    MQTTReaderService()
     yield
+    MQTTReaderService().stop()
     print("Application shutdown")
 
 app = FastAPI(lifespan=lifespan)
