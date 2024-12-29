@@ -15,3 +15,22 @@ class AttendanceScannersRepository:
 
             res = await session.execute(query)
             return res.scalars().first()
+
+    @staticmethod
+    async def create_new_attendance_scanner(attendance_scanner: AttendanceScannersModel) -> None:
+        async with async_session_factory() as session:
+            session.add(attendance_scanner)
+            await session.commit()
+
+    @staticmethod
+    async def update_scanner_lab(scanner_id: str, lab_id: int) -> None:
+        async with async_session_factory() as session:
+            query = (
+                select(AttendanceScannersModel)
+                .filter(AttendanceScannersModel.id == scanner_id)
+            )
+
+            res = await session.execute(query)
+            scanner = res.scalars().first()
+            scanner.lab_id = lab_id
+            await session.commit()
