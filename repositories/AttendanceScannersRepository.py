@@ -15,3 +15,9 @@ class AttendanceScannersRepository:
 
             res = await session.execute(query)
             return res.scalars().first()
+
+    @staticmethod
+    async def create_new_attendance_scanner(attendance_scanner: AttendanceScannersModel) -> None:
+        async with async_session_factory() as session:
+            session.add(attendance_scanner)
+            await session.commit()
