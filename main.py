@@ -7,7 +7,7 @@ from controllers.GatewaysController import gateways_router
 from database.database_config import check_database_connection
 from controllers.labs_controller import labs_router
 from controllers.attendances_controller import attendances_router
-from controllers.devices_controller import devices_router
+from controllers.AttendanceScannersController import attendance_scanners_router
 from database.fake_data_scripts import insert_fake_data_to_db
 from database.tables_creation import create_db_tables
 from services.MQTTReaderService import MQTTReaderService
@@ -35,7 +35,7 @@ app.add_middleware(
 
 app.include_router(labs_router, prefix="/labs", tags=["labs"])
 app.include_router(attendances_router, prefix="/attendances", tags=["attendances"])
-app.include_router(devices_router, prefix="/devices", tags=["devices"])
+app.include_router(attendance_scanners_router, prefix="/devices", tags=["devices"])
 app.include_router(gateways_router, prefix="/gateways", tags=["gateways"])
 
 
