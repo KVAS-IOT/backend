@@ -17,3 +17,7 @@ class AttendanceScannerService:
     @staticmethod
     async def create_new_attendance_scanner(attendance_scanner_add_dto: AttendanceScannerAddDTO) -> None:
         await AttendanceScannersRepository.create_new_attendance_scanner(AttendanceScannersModel(**attendance_scanner_add_dto.model_dump()))
+
+    @staticmethod
+    async def update_attendance_scanner_lab(scanner_id: str, lab_id: int) -> None:
+        await AttendanceScannersRepository.update_scanner_lab(scanner_id, lab_id)

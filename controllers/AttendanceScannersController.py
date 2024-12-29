@@ -15,7 +15,6 @@ async def get_scanner_gateway(scanner_id: str) -> GatewayGetDTO:
 async def create_attendance_scanner(device: AttendanceScannerAddDTO) -> None:
     await AttendanceScannerService.create_new_attendance_scanner(device)
 
-@attendance_scanners_router.put("/{scanner_id}/lab")
+@attendance_scanners_router.put("/{scanner_id}/lab", status_code=status.HTTP_202_ACCEPTED)
 async def update_scanner_lab(scanner_id: str, lab_id: int) -> None:
-    # TODO: Implement
-    pass
+    await AttendanceScannerService.update_attendance_scanner_lab(scanner_id, lab_id)
