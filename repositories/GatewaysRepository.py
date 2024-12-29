@@ -15,3 +15,9 @@ class GatewaysRepository:
 
             res = await session.execute(query)
             return res.scalars().first()
+
+    @staticmethod
+    async def create_new_gateway(gateway: GatewaysModel) -> None:
+        async with async_session_factory() as session:
+            session.add(gateway)
+            await session.commit()
