@@ -43,3 +43,9 @@ class LabRepository:
             lab_model = res.scalars().first()
             lab_model.last_updated_date = new_last_updated_date
             await session.commit()
+
+    @staticmethod
+    async def create_lab(lab: LabsModel):
+        async with async_session_factory() as session:
+            session.add(lab)
+            await session.commit()
