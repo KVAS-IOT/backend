@@ -22,8 +22,7 @@ async def create_lab(lab: LabAddDTO) -> None:
 
 @labs_router.put("/{lab_id}/lectures", status_code=status.HTTP_202_ACCEPTED)
 async def update_lab_lectures(lab_id: int, lecture_times: list[LectureTimes]) -> None:
-    # TODO: Implement
-    pass
+    await LabService.update_lab_lectures(lab_id, lecture_times)
 
 @labs_router.get("/{lab_id}/gateway")
 async def get_lab_gateway(lab_id: int) -> GatewayGetDTO:

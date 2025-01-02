@@ -49,3 +49,16 @@ class LabRepository:
         async with async_session_factory() as session:
             session.add(lab)
             await session.commit()
+
+    @staticmethod
+    async def update_lab_lectures(lab_id: int, lecture_times: list[LectureTimes]):
+        async with async_session_factory() as session:
+            query = (
+                select(LabsModel)
+                .filter(LabsModel.id == lab_id)
+            )
+
+            res = await session.execute(query)
+            lab_model = res.scalars().first()
+            lab_model.lecture_times = lecture_times
+            await session.commit()

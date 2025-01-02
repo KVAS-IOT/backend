@@ -25,3 +25,7 @@ class LabService:
     async def create_lab(new_lab: LabAddDTO):
         new_lab_model = LabsModel(name=new_lab.name, number=new_lab.number)
         await LabRepository.create_lab(new_lab_model)
+
+    @staticmethod
+    async def update_lab_lectures(lab_id: int, lecture_times: list[LectureTimes]):
+        await LabRepository.update_lab_lectures(lab_id, lecture_times)
