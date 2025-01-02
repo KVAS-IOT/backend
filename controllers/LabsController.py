@@ -3,6 +3,7 @@ from fastapi import APIRouter, status
 from dtos.GatewayDTOs import GatewayGetDTO
 from dtos.LabDTOs import LabGetDTO, LabAddDTO
 from models.LabsModel import LectureTimes
+from services.GatewayService import GatewayService
 from services.LabService import LabService
 
 labs_router = APIRouter()
@@ -27,5 +28,4 @@ async def update_lab_lectures(lab_id: int, lecture_times: list[LectureTimes]) ->
 
 @labs_router.get("/{lab_id}/gateway")
 async def get_lab_gateway(lab_id: int) -> GatewayGetDTO:
-    # TODO: Implement
-    pass
+    return await GatewayService.get_gateway_by_lab_id(lab_id)

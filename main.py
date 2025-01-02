@@ -5,7 +5,7 @@ from starlette.middleware.cors import CORSMiddleware
 
 from controllers.GatewaysController import gateways_router
 from database.database_config import check_database_connection
-from controllers.labs_controller import labs_router
+from controllers.LabsController import labs_router
 from controllers.attendances_controller import attendances_router
 from controllers.AttendanceScannersController import attendance_scanners_router
 from database.fake_data_scripts import insert_fake_data_to_db
