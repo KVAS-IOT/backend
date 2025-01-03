@@ -1,5 +1,5 @@
-from dtos.LabDTOs import LabGetDTO
-from models.LabsModel import LectureTimes
+from dtos.LabDTOs import LabGetDTO, LabAddDTO
+from models.LabsModel import LectureTimes, LabsModel
 from repositories.LabRepository import LabRepository
 from services.DatetimeService import DatetimeService
 
@@ -20,3 +20,12 @@ class LabService:
     async def update_lab_last_update_time(lab_id: int, new_last_updated_date: str):
         new_last_update_date_datetime = DatetimeService.convert_date_string_to_datetime(new_last_updated_date)
         await LabRepository.update_lab_last_update_time(lab_id, new_last_update_date_datetime)
+
+    @staticmethod
+    async def create_lab(new_lab: LabAddDTO):
+        new_lab_model = LabsModel(name=new_lab.name, number=new_lab.number)
+        await LabRepository.create_lab(new_lab_model)
+
+    @staticmethod
+    async def update_lab_lectures(lab_id: int, lecture_times: list[LectureTimes]):
+        await LabRepository.update_lab_lectures(lab_id, lecture_times)
