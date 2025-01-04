@@ -7,5 +7,5 @@ gateways_router = APIRouter()
 
 
 @gateways_router.post("/", status_code=status.HTTP_201_CREATED)
-async def create_gateway(gateway: GatewayAddDTO) -> None:
-    await GatewayService.create_new_gateway(gateway)
+async def update_lab_gateway(gateway: GatewayAddDTO) -> None:
+    await GatewayService.update_lab_gateway(gateway)
