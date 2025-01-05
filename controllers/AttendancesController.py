@@ -1,9 +1,14 @@
+import datetime
+
 from fastapi import APIRouter
+
+from dtos.AttendanceDTOs import AttendancesByLabAndDateGetDTO
 
 attendances_router = APIRouter()
 
 @attendances_router.get("/")
-async def get_attendances(lab_id: int, lecture_time: str, date: str):
+async def get_attendances(lab_id: int, date: datetime.date) -> AttendancesByLabAndDateGetDTO:
+    print(date)
     return {
         "attendances": [
             {
