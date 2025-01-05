@@ -5,9 +5,9 @@ from repositories.GatewaysRepository import GatewaysRepository
 
 class GatewayService:
     @staticmethod
-    async def create_new_gateway(gateway: GatewayAddDTO) -> None:
+    async def update_lab_gateway(gateway: GatewayAddDTO) -> None:
         new_gateway_model = GatewaysModel(**gateway.model_dump())
-        await GatewaysRepository.create_new_gateway(new_gateway_model)
+        await GatewaysRepository.update_lab_gateway(new_gateway_model)
 
     @staticmethod
     async def get_gateway_by_lab_id(lab_id: int) -> GatewayGetDTO:
