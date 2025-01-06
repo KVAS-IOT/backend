@@ -16,8 +16,7 @@ async def check_database_connection():
     from sqlalchemy.future import select
 
     async with async_session_factory() as session:
-        async with session.begin():
-            result = await session.execute(select(text("1")))
-            if result.scalar() != 1:
-                raise ValueError("Database connection wasn't established")
-            print("Connection was established")
+        result = await session.execute(select(text("1")))
+        if result.scalar() != 1:
+            raise ValueError("Database connection wasn't established")
+        print("Connection was established")
