@@ -1,3 +1,5 @@
+from loguru import logger
+
 from database.DatabaseConfig import async_session_factory, DBBaseModel, async_engine
 
 from models.AttendanceScannersModel import AttendanceScannersModel
@@ -10,4 +12,4 @@ async def create_db_tables():
     async with async_engine.begin() as engine:
         await engine.run_sync(DBBaseModel.metadata.drop_all)
         await engine.run_sync(DBBaseModel.metadata.create_all)
-        print("Tables were created")
+        logger.info("Tables were created")

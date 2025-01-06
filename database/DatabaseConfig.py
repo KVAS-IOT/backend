@@ -1,3 +1,4 @@
+from loguru import logger
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 from sqlalchemy.orm import DeclarativeBase
 
@@ -19,4 +20,4 @@ async def check_database_connection():
         result = await session.execute(select(text("1")))
         if result.scalar() != 1:
             raise ValueError("Database connection wasn't established")
-        print("Connection was established")
+        logger.info("Connection was established")

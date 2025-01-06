@@ -1,6 +1,7 @@
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
+from loguru import logger
 from starlette.middleware.cors import CORSMiddleware
 
 from controllers.GatewaysController import gateways_router
@@ -19,9 +20,10 @@ async def lifespan(_: FastAPI):
     await create_db_tables()
     await insert_fake_data_to_db()
     MQTTReaderService()
+    logger.info("Application started")
     yield
     MQTTReaderService().stop()
-    print("Application shutdown")
+    logger.info("Application shutdown")
 
 app = FastAPI(lifespan=lifespan)
 
