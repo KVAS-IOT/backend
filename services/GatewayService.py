@@ -12,4 +12,5 @@ class GatewayService:
     @staticmethod
     async def get_gateway_by_lab_id(lab_id: int) -> GatewayGetDTO:
         gateway_model = await GatewaysRepository.get_gateway_by_lab_id(lab_id)
-        return GatewayGetDTO(url=gateway_model.url, port=gateway_model.port, username=gateway_model.username, password=gateway_model.password)
+        return GatewayGetDTO(url=gateway_model.url, port=gateway_model.port, username=gateway_model.username,
+                             password=gateway_model.password)

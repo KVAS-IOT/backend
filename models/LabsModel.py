@@ -1,5 +1,5 @@
-from datetime import datetime, timedelta
 import enum
+from datetime import datetime, timedelta
 
 from sqlalchemy import Enum
 from sqlalchemy.dialects.postgresql import ARRAY

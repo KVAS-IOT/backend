@@ -1,11 +1,6 @@
 from loguru import logger
 
-from database.DatabaseConfig import async_session_factory, DBBaseModel, async_engine
-
-from models.AttendanceScannersModel import AttendanceScannersModel
-from models.AttendancesModel import AttendancesModel
-from models.GatewaysModel import GatewaysModel
-from models.LabsModel import LabsModel
+from database.DatabaseConfig import DBBaseModel, async_engine
 
 
 async def create_db_tables():

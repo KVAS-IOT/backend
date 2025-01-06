@@ -4,13 +4,16 @@ from sqlalchemy.orm import DeclarativeBase
 
 from config.EnvironmentVariables import DB_USERNAME, DB_PASSWORD, DB_HOST, DB_NAME
 
-async_engine = create_async_engine(url = f"postgresql+asyncpg://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}:5432/{DB_NAME}", echo = True)
+async_engine = create_async_engine(url=f"postgresql+asyncpg://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}:5432/{DB_NAME}",
+                                   echo=True)
 async_session_factory = async_sessionmaker(async_engine, expire_on_commit=False)
+
 
 class DBBaseModel(DeclarativeBase):
     def __repr__(self):
         cols = [f"{col}={getattr(self, col)}" for col in self.__table__.columns.keys()]
         return f"<{self.__class__.__name__} {', '.join(cols)})>"
+
 
 async def check_database_connection():
     from sqlalchemy import text

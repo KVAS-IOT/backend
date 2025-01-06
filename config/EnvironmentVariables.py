@@ -1,7 +1,9 @@
 import os
+
 from dotenv import load_dotenv
 
 load_dotenv()
+
 
 def get_env_variable(variable_name: str):
     if variable_name not in os.environ:
