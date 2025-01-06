@@ -3,7 +3,7 @@ import datetime
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column
 
-from database.database_config import DBBaseModel
+from database.DatabaseConfig import DBBaseModel
 
 
 class AttendancesModel(DBBaseModel):

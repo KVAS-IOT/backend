@@ -1,4 +1,4 @@
-from database.database_config import async_session_factory, DBBaseModel, async_engine
+from database.DatabaseConfig import async_session_factory, DBBaseModel, async_engine
 
 from models.AttendanceScannersModel import AttendanceScannersModel
 from models.AttendancesModel import AttendancesModel

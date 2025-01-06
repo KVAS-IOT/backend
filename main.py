@@ -4,12 +4,12 @@ from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
 from controllers.GatewaysController import gateways_router
-from database.database_config import check_database_connection
+from database.DatabaseConfig import check_database_connection
 from controllers.LabsController import labs_router
 from controllers.AttendancesController import attendances_router
 from controllers.AttendanceScannersController import attendance_scanners_router
-from database.fake_data.fake_data_scripts import insert_fake_data_to_db
-from database.tables_creation import create_db_tables
+from database.fake_data.FakeDataScripts import insert_fake_data_to_db
+from database.TablesCreation import create_db_tables
 from services.MQTTReaderService import MQTTReaderService
 
 

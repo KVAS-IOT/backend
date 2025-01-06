@@ -1,7 +1,7 @@
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 from sqlalchemy.orm import DeclarativeBase
 
-from config.environment_variables import DB_USERNAME, DB_PASSWORD, DB_HOST, DB_NAME
+from config.EnvironmentVariables import DB_USERNAME, DB_PASSWORD, DB_HOST, DB_NAME
 
 async_engine = create_async_engine(url = f"postgresql+asyncpg://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}:5432/{DB_NAME}", echo = True)
 async_session_factory = async_sessionmaker(async_engine, expire_on_commit=False)

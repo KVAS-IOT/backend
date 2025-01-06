@@ -2,7 +2,7 @@ import datetime
 
 from sqlalchemy import select
 
-from database.database_config import async_session_factory
+from database.DatabaseConfig import async_session_factory
 from models.LabsModel import LabsModel, LectureTimes
 
 

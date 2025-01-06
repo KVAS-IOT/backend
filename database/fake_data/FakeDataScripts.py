@@ -1,6 +1,6 @@
 import json
 
-from database.database_config import async_session_factory
+from database.DatabaseConfig import async_session_factory
 from models.AttendanceScannersModel import AttendanceScannersModel
 from models.AttendancesModel import AttendancesModel
 from models.GatewaysModel import GatewaysModel
@@ -11,7 +11,7 @@ from services.DatetimeService import DatetimeService
 async def insert_labs_fake_data():
     fake_labs = []
 
-    with open("database/fake_data/fake_labs.json", "r", encoding="utf-8") as file:
+    with open("database/fake_data/FakeLabs.json", "r", encoding="utf-8") as file:
         labs = json.load(file)
 
     for lab in labs:
@@ -22,7 +22,7 @@ async def insert_labs_fake_data():
         await session.commit()
 
 async def insert_attendance_scanners_fake_data():
-    with open("database/fake_data/fake_attendance_scanners.json", "r", encoding="utf-8") as file:
+    with open("database/fake_data/FakeAttendanceScanners.json", "r", encoding="utf-8") as file:
         attendance_scanners = json.load(file)
 
     fake_attendance_scanners = [AttendanceScannersModel(**scanner) for scanner in attendance_scanners]
@@ -34,7 +34,7 @@ async def insert_attendance_scanners_fake_data():
 async def insert_attendances_fake_data():
     fake_attendances = []
 
-    with open("database/fake_data/fake_attendances.json", "r", encoding="utf-8") as file:
+    with open("database/fake_data/FakeAttendances.json", "r", encoding="utf-8") as file:
         attendance_records = json.load(file)
 
     for record in attendance_records:
@@ -45,7 +45,7 @@ async def insert_attendances_fake_data():
         await session.commit()
 
 async def insert_gateway_fake_data():
-    with open("database/fake_data/fake_gateways.json", "r", encoding="utf-8") as file:
+    with open("database/fake_data/FakeGateways.json", "r", encoding="utf-8") as file:
         gateways = json.load(file)
 
     fake_gateways = [GatewaysModel(**gateway) for gateway in gateways]

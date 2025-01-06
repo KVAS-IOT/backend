@@ -2,7 +2,7 @@ import datetime
 
 from sqlalchemy import select, cast, Date
 
-from database.database_config import async_session_factory
+from database.DatabaseConfig import async_session_factory
 from models.AttendancesModel import AttendancesModel
 
 

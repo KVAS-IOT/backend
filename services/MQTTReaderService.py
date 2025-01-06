@@ -3,7 +3,7 @@ import json
 from loguru import logger
 import paho.mqtt.client as mqtt
 
-from config.environment_variables import MQTT_USERNAME, MQTT_PASSWORD, MQTT_ADDRESS, MQTT_PORT
+from config.EnvironmentVariables import MQTT_USERNAME, MQTT_PASSWORD, MQTT_ADDRESS, MQTT_PORT
 from dtos.LabDTOs import LabGetDTO
 from services.AttendanceService import AttendanceService
 from services.LabService import LabService
