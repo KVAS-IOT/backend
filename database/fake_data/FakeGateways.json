@@ -1,0 +1,37 @@
+[
+  {
+    "url": "abydos-gw.fei.tuke.sk",
+    "port": 1883,
+    "username": "maker",
+    "password": "this.is.mqtt",
+    "lab_id": 1
+  },
+  {
+    "url": "dune-gw.fei.tuke.sk",
+    "port": 1883,
+    "username": "maker",
+    "password": "this.is.mqtt",
+    "lab_id": 2
+  },
+  {
+    "url": "endor-gw.fei.tuke.sk",
+    "port": 1883,
+    "username": "maker",
+    "password": "this.is.mqtt",
+    "lab_id": 3
+  },
+  {
+    "url": "meridian-gw.fei.tuke.sk",
+    "port": 1883,
+    "username": "maker",
+    "password": "this.is.mqtt",
+    "lab_id": 4
+  },
+  {
+    "url": "vulcan-gw.fei.tuke.sk",
+    "port": 1883,
+    "username": "maker",
+    "password": "this.is.mqtt",
+    "lab_id": 5
+  }
+]

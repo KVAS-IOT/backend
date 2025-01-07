@@ -2,7 +2,7 @@ import datetime
 
 from sqlalchemy import select
 
-from database.database_config import async_session_factory
+from database.DatabaseConfig import async_session_factory
 from models.LabsModel import LabsModel, LectureTimes
 
 
@@ -10,26 +10,24 @@ class LabRepository:
     @staticmethod
     async def get_all_labs() -> list[LabsModel]:
         async with async_session_factory() as session:
-            async with session.begin():
-                query = (
-                    select(LabsModel)
-                )
+            query = (
+                select(LabsModel)
+            )
 
-                res = await session.execute(query)
-                lab_models = res.scalars().all()
-                return lab_models
+            res = await session.execute(query)
+            lab_models = res.scalars().all()
+            return lab_models
 
     @staticmethod
     async def get_lab_lecture_times_by_lab_id(lab_id: int) -> list[LectureTimes]:
         async with async_session_factory() as session:
-            async with session.begin():
-                query = (
-                    select(LabsModel.lecture_times)
-                    .filter(LabsModel.id == lab_id)
-                )
+            query = (
+                select(LabsModel.lecture_times)
+                .filter(LabsModel.id == lab_id)
+            )
 
-                res = await session.execute(query)
-                return res.scalars().first()
+            res = await session.execute(query)
+            return res.scalars().first()
 
     @staticmethod
     async def update_lab_last_update_time(lab_id: int, new_last_updated_date: datetime.datetime):

@@ -12,11 +12,13 @@ class AttendanceScannerService:
 
         gateway_model = await GatewayService.get_gateway_by_lab_id(scanner_lab_id)
 
-        return GatewayGetDTO(url=gateway_model.url, port=gateway_model.port, username=gateway_model.username, password=gateway_model.password)
+        return GatewayGetDTO(url=gateway_model.url, port=gateway_model.port, username=gateway_model.username,
+                             password=gateway_model.password)
 
     @staticmethod
     async def create_new_attendance_scanner(attendance_scanner_add_dto: AttendanceScannerAddDTO) -> None:
-        await AttendanceScannersRepository.create_new_attendance_scanner(AttendanceScannersModel(**attendance_scanner_add_dto.model_dump()))
+        await AttendanceScannersRepository.create_new_attendance_scanner(
+            AttendanceScannersModel(**attendance_scanner_add_dto.model_dump()))
 
     @staticmethod
     async def update_attendance_scanner_lab(scanner_id: str, lab_id: int) -> None:

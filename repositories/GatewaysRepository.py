@@ -1,7 +1,7 @@
 from sqlalchemy import select
 from sqlalchemy.exc import SQLAlchemyError
 
-from database.database_config import async_session_factory
+from database.DatabaseConfig import async_session_factory
 from models.GatewaysModel import GatewaysModel
 
 
