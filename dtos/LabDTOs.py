@@ -1,4 +1,5 @@
 import datetime
+from typing import Optional
 
 from pydantic import BaseModel
 
@@ -10,4 +11,4 @@ class LabAddDTO(BaseModel):
 
 class LabGetDTO(LabAddDTO):
     id: int
-    last_updated_date: datetime.datetime
+    last_updated_date: Optional[datetime.datetime]
