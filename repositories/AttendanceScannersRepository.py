@@ -45,3 +45,10 @@ class AttendanceScannersRepository:
             scanner = res.scalars().first()
             scanner.lab_id = lab_id
             await session.commit()
+
+    @staticmethod
+    async def get_all_attendance_scanners() -> list[AttendanceScannersModel]:
+        async with async_session_factory() as session:
+            query = select(AttendanceScannersModel)
+            res = await session.execute(query)
+            return res.scalars().all()

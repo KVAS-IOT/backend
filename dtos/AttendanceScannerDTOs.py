@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
 
-class AttendanceScannerAddDTO(BaseModel):
+class AttendanceScannerDTO(BaseModel):
     id: str
     lab_id: int

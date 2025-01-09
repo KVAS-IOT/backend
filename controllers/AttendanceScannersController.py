@@ -1,6 +1,6 @@
 from fastapi import APIRouter, status
 
-from dtos.AttendanceScannerDTOs import AttendanceScannerAddDTO
+from dtos.AttendanceScannerDTOs import AttendanceScannerDTO
 from dtos.GatewayDTOs import GatewayGetDTO
 from services.AttendanceScannerService import AttendanceScannerService
 
@@ -12,8 +12,13 @@ async def get_scanner_gateway(scanner_id: str) -> GatewayGetDTO:
     return await AttendanceScannerService.get_scanner_gateway(scanner_id)
 
 
+@attendance_scanners_router.get("/")
+async def get_all_attendance_scanners() -> list[AttendanceScannerDTO]:
+    return await AttendanceScannerService.get_all_attendance_scanners()
+
+
 @attendance_scanners_router.post("", status_code=status.HTTP_201_CREATED)
-async def create_attendance_scanner(device: AttendanceScannerAddDTO) -> None:
+async def create_attendance_scanner(device: AttendanceScannerDTO) -> None:
     await AttendanceScannerService.create_new_attendance_scanner(device)
 
 

@@ -1,4 +1,4 @@
-from dtos.AttendanceScannerDTOs import AttendanceScannerAddDTO
+from dtos.AttendanceScannerDTOs import AttendanceScannerDTO
 from dtos.GatewayDTOs import GatewayGetDTO
 from models.AttendanceScannersModel import AttendanceScannersModel
 from repositories.AttendanceScannersRepository import AttendanceScannersRepository
@@ -16,7 +16,12 @@ class AttendanceScannerService:
                              password=gateway_model.password)
 
     @staticmethod
-    async def create_new_attendance_scanner(attendance_scanner_add_dto: AttendanceScannerAddDTO) -> None:
+    async def get_all_attendance_scanners() -> list[AttendanceScannerDTO]:
+        attendance_scanners = await AttendanceScannersRepository.get_all_attendance_scanners()
+        return [AttendanceScannerDTO(id=scanner.id, lab_id=scanner.lab_id) for scanner in attendance_scanners]
+
+    @staticmethod
+    async def create_new_attendance_scanner(attendance_scanner_add_dto: AttendanceScannerDTO) -> None:
         scanner_from_db = await AttendanceScannersRepository.get_scanner_by_id(attendance_scanner_add_dto.id)
         if scanner_from_db:
             await AttendanceScannersRepository.update_scanner_lab(attendance_scanner_add_dto.id,
