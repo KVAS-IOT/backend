@@ -25,7 +25,7 @@ class AttendanceScannersRepository:
             )
 
             res = await session.execute(query)
-            return res.scalars().first
+            return res.scalars().first()
 
     @staticmethod
     async def create_new_attendance_scanner(attendance_scanner: AttendanceScannersModel) -> None:
