@@ -17,6 +17,17 @@ class AttendanceScannersRepository:
             return res.scalars().first()
 
     @staticmethod
+    async def get_scanner_by_id(scanner_id: str) -> AttendanceScannersModel:
+        async with async_session_factory() as session:
+            query = (
+                select(AttendanceScannersModel)
+                .filter(AttendanceScannersModel.id == scanner_id)
+            )
+
+            res = await session.execute(query)
+            return res.scalars().first
+
+    @staticmethod
     async def create_new_attendance_scanner(attendance_scanner: AttendanceScannersModel) -> None:
         async with async_session_factory() as session:
             session.add(attendance_scanner)

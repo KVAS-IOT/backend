@@ -17,8 +17,12 @@ class AttendanceScannerService:
 
     @staticmethod
     async def create_new_attendance_scanner(attendance_scanner_add_dto: AttendanceScannerAddDTO) -> None:
-        await AttendanceScannersRepository.create_new_attendance_scanner(
-            AttendanceScannersModel(**attendance_scanner_add_dto.model_dump()))
+        scanner_from_db = await AttendanceScannersRepository.get_scanner_by_id(attendance_scanner_add_dto.id)
+        if scanner_from_db:
+            await AttendanceScannersRepository.update_scanner_lab(attendance_scanner_add_dto.id, attendance_scanner_add_dto.lab_id)
+        else:
+            await AttendanceScannersRepository.create_new_attendance_scanner(
+                AttendanceScannersModel(**attendance_scanner_add_dto.model_dump()))
 
     @staticmethod
     async def update_attendance_scanner_lab(scanner_id: str, lab_id: int) -> None:
